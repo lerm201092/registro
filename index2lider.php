@@ -68,6 +68,7 @@
 					<li><a href="#!" onclick="verDivs('1');">Agregar</a></li>
 					<li><a href="#!" onclick="verDivs('2');">Listar</a></li>
 					<li class="divider"></li>
+					<li><a href="php/desconectar.php">Cerrar Sesion</a></li>
 					</ul>
 
 					<ul class="fixed side-nav" id="mobile-demo">
@@ -165,6 +166,8 @@
 				);
 				$('select').material_select();
 				tabla();
+
+				
 			});
 
 			function verDivs(idDiv) {

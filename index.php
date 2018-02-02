@@ -81,8 +81,8 @@
 							
 							<div style="color:white" class="input-field col s12 m10 l6 offset-m1 offset-l3">
 								<i class="material-icons prefix blue-text text-lighten-2" style="bottom: 28px;left:10px;">fingerprint</i>
-								<select style="color:white">
-									<option style="color:white" value="" disabled selected>Escoja una Opción</option>
+								<select  onchange="imprimirValor();" id="rol" style="color:white">
+									<option style="color:white" value="0" disabled selected>Escoja una Opción</option>
 									<option style="color:white" value="1">Administrador</option>
 									<option style="color:white" value="2">Lider</option>
 								</select>
@@ -119,31 +119,54 @@
 		<script src="js/materialize.js"></script>
 		<script src="js/sweetalert.js"></script>
 		<script>
+		var rol="0";
 			function Validar(user, pass)
 			{
-				$.ajax({
+				rol=""+imprimirValor();
+				if(rol=="0"){
+					swal("Error!", "Seleccione su rol !!! ", "warning");
+				}else{
+					$.ajax({
 					url: "php/ValidarLogin.php",
 					type: "POST",
-					data: "user="+user+"&pass="+pass,
+					data: "rol="+rol+"&user="+user+"&pass="+pass,
 					success: function(resp)
 					{
 						if(resp==2){
 							swal("Error!", "Usuario y/o contraseña Incorrectos", "warning");
 						}
 						if(resp==3){
-							swal("Error!", "Complete los campos", "warning");
+							swal("Error !", "Complete los campos", "warning");
 						}
 						if(resp==1){
-							location.href="index2lider.php";
+							if(rol=="1"){
+								swal("Error!", "Falta pagina de administrador", "warning");
+							}else{
+								location.href="index2lider.php";	
+							}
+							
 						}	
 					}
 				});
+				}
+				
 			}
 			
 			$( document ).ready(function(){
 				$(".button-collapse").sideNav();
 				$('select').material_select();
 			});
+
+		
+
+			function imprimirValor(){
+			var select = document.getElementById("rol");
+			var options=document.getElementsByTagName("option");
+			console.log(select.value);
+			console.log(options[select.value].innerHTML)
+
+			return select.value;
+			}
 			
 		</script>
 
