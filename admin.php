@@ -20,13 +20,6 @@
 			    margin-left: 300px;					
 			}
 			
-			#cont1{
-				margin: 10px;
-			}
-			table > tr > td{
-				height:15px;
-			}
-
 			@media screen and (max-width: 1000px) {
 				#contenedor{
 					margin-left: 0;
@@ -36,7 +29,7 @@
 			
 		</style>
 	</head>
-	<body onload="verDivs(1);">
+	<body>
 		<div id="top" class="grey darken-3" style="height: 25px"></div>
 		<div id="menu">
 			<nav>
@@ -88,19 +81,30 @@
 			</nav>
 		</div>
 
-		<div id="contenedor" class="row" background="img/votos.jpg">
-			<div id="cont1" class="col s11 m10 l4" >
+		<div id="contenedor" class="row">
+			<div id="cont1" class="col s12">
                 <div class="row">
                     <div class="col s12">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                                <span class="card-title">Card Title</span>
-                                <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
+                        <div class="card grey lighten-4">
+                            <div class="card-content ">
+                                <span class="card-title">Votantes</span>
+                                <p>Actualmente en nustra base de datos tenemos registrados a 165 personas</p>
                             </div>
-                            <div class="card-action">
-                                <a href="#">This is a link</a>
-                                <a href="#">This is a link</a>
+                            <div class="card-action" style="text-align:right">
+                                <a href="#" >Ver Lista</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col s12">
+                        <div class="card grey lighten-4">
+                            <div class="card-content ">
+                                <span class="card-title">Lideres</span>
+                                <p>Pedro Luis Quintero : 100 Personas <br>Luis Eduardo Ramos : 85 personas <br> Breys Vega : 63 personas <br>. <br> . <br> John Montero : 10 personas <br></p>
+                            </div>
+                            <div class="card-action" style="text-align:right">
+                                <a href="#" >Ver Lista</a>
                             </div>
                         </div>
                     </div>
