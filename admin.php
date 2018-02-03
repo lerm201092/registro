@@ -125,6 +125,19 @@
 <canvas id="chart-area" width="300" height="300"></canvas>
 </div>
 <script>
+
+function consultarPersonas() {
+	$.ajax({
+		url: "php/consultarPersonas.php",
+		type: "POST",
+		data: datos,
+		success: function(resp)        
+		{
+			
+		}       
+	});
+	
+}
 var pieData = [ {
 					value: 100,
 					color:"#0b82e7",
