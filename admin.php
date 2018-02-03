@@ -120,7 +120,41 @@
 		<script src="js/materialize.js"></script>
 		<script src="JS/sweetalert.js"></script>
 
+		<script src="Chart.js"></script>
+<div id="canvas-holder" style="text-align:center">
+<canvas id="chart-area" width="300" height="300"></canvas>
+</div>
+<script>
+var pieData = [ {
+					value: 100,
+					color:"#0b82e7",
+					highlight: "#0c62ab",
+					label: "Pedro Luis Quintero"
+				},
+				{
+					value: 85,
+					color: "#e3e860",
+					highlight: "#a9ad47",
+					label: "Luis Eduardo"
+				},
+				{
+					value: 65,
+					color: "#eb5d82",
+					highlight: "#b74865",
+					label: "Brey Vega"
+				},
+				{
+					value: 10,
+					color: "#5ae85a",
+					highlight: "#42a642",
+					label: "John Montero"
+				}
+			];
 
+
+var ctx = document.getElementById("chart-area").getContext("2d");
+window.myPie = new Chart(ctx).Pie(pieData);	;
+</script>
 	
 	</body>
 
