@@ -124,6 +124,10 @@
 						<label for="direccion">Direccion</label>
 					</div>
 					<div class="input-field col s6">
+						<input style="font-size:14px;" id="barrio" type="text" class="validate">
+						<label for="barrio">Barrio</label>
+					</div>
+					<div class="input-field col s12">
 						<input style="font-size:14px;" id="ciudad" type="text" class="validate">
 						<label for="ciudad">Ciudad</label>
 					</div>
@@ -174,7 +178,9 @@
 
 				if (idDiv=="1")
 				{	
+				
 				limpiar();
+				fun=1;
 				if($(window).width()>1000){
 					document.getElementById("cont2").style.display = 'block';
 				}else{
@@ -197,6 +203,7 @@
 					document.getElementById("cont1").style.display = 'block';
 				}
 				}else if(idDiv=="3"){
+					fun=2;
 					document.getElementById("menu_add").style.display = 'block';
 					document.getElementById("cont1").style.display = 'block';			
 					document.getElementById("btCancelar").style.display = 'block';
@@ -235,6 +242,7 @@
 					"telefono" : $("#telefono").val(),
 					"email" : $("#email").val(),
 					"ciudad" : $("#ciudad").val(),
+					"barrio" : $("#barrio").val(),
 					"direccion" : $("#direccion").val()
 				}
 				
@@ -367,7 +375,8 @@
 								var apellido     = json.apellido;
 								var email        = json.email;              
 								var telefono     = json.telefono;
-								var direccion    = json.direccion;								
+								var direccion    = json.direccion;
+								var barrio    = json.barrio;		
 								var ciudad       = json.ciudad;	
 
 								$("#id").val(id2);
@@ -377,6 +386,7 @@
 								$("#telefono").val(telefono);
 								$("#direccion").val(direccion);
 								$("#ciudad").val(ciudad);
+								$("#barrio").val(barrio);
 
 								$("#id").focus();								
 								$("#apellidos").focus();
@@ -384,6 +394,7 @@
 								$("#telefono").focus();
 								$("#direccion").focus();
 								$("#ciudad").focus();
+								$("#barrio").focus();
 								$("#nombres").focus();
 
 								$("#id").prop('disabled',true);
@@ -404,8 +415,10 @@
 				$("#telefono").val("");
 				$("#direccion").val("");
 				$("#ciudad").val("");
+				$("#barrio").val("");
 
-				$("#id").focus();								
+				$("#id").focus();
+				$("#barrio").focus();								
 				$("#apellidos").focus();
 				$("#email").focus();
 				$("#telefono").focus();
@@ -434,6 +447,7 @@
 					"telefono" : $("#telefono").val(),
 					"email" : $("#email").val(),
 					"ciudad" : $("#ciudad").val(),
+					"barrio" : $("#barrio").val(),
 					"direccion" : $("#direccion").val()
 				}
 				

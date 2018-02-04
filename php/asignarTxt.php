@@ -12,7 +12,8 @@
 	    $ar["id"]     = $f2['id'];
         $ar["telefono"]        = $f2['telefono'];	
         $ar["email"]           = $f2['email'];
-	    $ar["direccion"]     = $f2['direccion'];
+        $ar["direccion"]     = $f2['direccion'];
+        $ar["barrio"]     = $f2['barrio'];
         $ar["ciudad"]        = $f2['ciudad'];	
     }
     $dato_json   = json_encode($ar);

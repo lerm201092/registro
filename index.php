@@ -140,7 +140,7 @@
 						}
 						if(resp==1){
 							if(rol=="1"){
-								swal("Error!", "Falta pagina de administrador", "warning");
+								location.href="admin.php";	
 							}else{
 								location.href="index2lider.php";	
 							}
