@@ -55,11 +55,6 @@
 					<br>
 					<li><a href="#!"><img src="img/logo.png" alt="" width="100%"></a></li>
 					<br>
-					<li class="divider"></li>
-					<li><a href="sass.html">Perfil</a></li>
-					<li><a href="badges.html">Misión</a></li>
-					<li><a href="collapsible.html">Visión</a></li>
-					<li class="divider"></li>
 					<li><a href="#!" onclick="verDivs('1');">Agregar</a></li>
 					<li><a href="#!" onclick="verDivs('2');">Listar</a></li>
 					<li class="divider"></li>
