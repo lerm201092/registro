@@ -1,14 +1,16 @@
 <?php   
     require("conectar.php");
-    $sql =" SELECT ciudad,COUNT(*) AS CANT FROM votantes
-            GROUP BY ciudad
-            ORDER BY CANT DESC 
-            LIMIT 4";
+    $sql =" SELECT barrio,COUNT(*) AS CANT 
+            FROM votantes
+            WHERE ciudad='Barranquilla'
+            GROUP BY barrio
+            ORDER BY CANT DESC
+            LIMIT 5";
     $sql2=mysqli_query($mysqli,"$sql");
 	
     echo "<thead>
             <tr>
-                <th>Ciudad</th>
+                <th>Barrio</th>
                 <th>Cantidad</th>                
             </tr>
         </thead>
@@ -17,8 +19,8 @@
 $i=1;
     while($row = mysqli_fetch_array($sql2)){
     echo "<tr>";
-    echo "  <td id='tdc1".$i."'>".$row['ciudad']."</td>";
-    echo "  <td id='tdc2".$i."'>".$row['CANT']."</td>";
+    echo "  <td id='tdb1".$i."'>".$row['barrio']."</td>";
+    echo "  <td id='tdb2".$i."'>".$row['CANT']."</td>";
     echo "</tr>";
     $i+=1;
     }

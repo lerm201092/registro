@@ -37,7 +37,8 @@
 		<div id="menu">
 			<nav>
 				<div class="nav-wrapper red darken-3">
-					<a href="#!" class="brand-logo">Registro</a>					
+					<a href="#!" class="brand-logo">Registro</a>
+					<a href="#!" id="menu_add" onclick="verDivs('1');" class="brand-logo right"><i class="material-icons hide-on-large-only">add_circle</i></a>
 					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 					<ul class="left hide-on-med-and-down">
 					<h5 style="margin-left:330px;float:left;margin-top:20px;">Registro de Votantes &nbsp;&nbsp;</h5>
@@ -55,6 +56,11 @@
 					<br>
 					<li><a href="#!"><img src="img/logo.png" alt="" width="100%"></a></li>
 					<br>
+					<li class="divider"></li>
+					<li><a href="sass.html">Perfil</a></li>
+					<li><a href="badges.html">Misión</a></li>
+					<li><a href="collapsible.html">Visión</a></li>
+					<li class="divider"></li>
 					<li><a href="#!" onclick="verDivs('1');">Agregar</a></li>
 					<li><a href="#!" onclick="verDivs('2');">Listar</a></li>
 					<li class="divider"></li>
@@ -104,11 +110,33 @@
 				<div class="row">
                     <div class="col s12 m4">
                         <div class="card grey lighten-4">
+                            <div class="card-content ">
+                                <span class="card-title">Lideres Con Menos Votos</span>
+                                <table class="striped" id="cantLiderNeg"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col s12 m4">
+                        <div class="card grey lighten-4">
                             <div class="card-content " style="text-align:center">
                                 <span class="card-title">Ciudades Mas Relevantes</span>
 								<br>
                                 <table style="display:none" class="striped" id="cantCiudad"></table>
 								<canvas id="chart-area" width="250%" height="250%"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col s12 m4">
+                        <div class="card grey lighten-4">
+                            <div class="card-content " style="text-align:center">
+                                <span class="card-title">Barrios Barranquilla</span>
+								<br>
+                                <table style="display:none" class="striped" id="cantBarrio"></table>
+								<canvas id="chart-area2" width="250%" height="250%"></canvas>
                             </div>
                         </div>
                     </div>
@@ -142,7 +170,9 @@ $( document ).ready(function(){
 				);
 				consultarPersonas();
 				consultarLideres();
+				consultarLideresNeg();
 				consultarCiudad();
+				consultarBarrio();
 				
 			});
 
@@ -158,6 +188,18 @@ $( document ).ready(function(){
 				});
 				
 			}
+			function consultarLideresNeg() {
+				$.ajax({
+					url: "php/consultarLideresNeg.php",
+					type: "POST",
+					data: "",
+					success: function(resp)        
+					{
+						$("#cantLiderNeg").html(resp);
+					}       
+				});
+				
+			}
 			function consultarCiudad() {
 				$.ajax({
 					url: "php/consultarCiudad.php",
@@ -166,14 +208,14 @@ $( document ).ready(function(){
 					success: function(resp)        
 					{
 						$("#cantCiudad").html(resp);
-						var ciudad1=$("#td11").html();
-						var cant1=$("#td21").html();
-						var ciudad2=$("#td12").html();
-						var cant2=$("#td22").html();
-						var ciudad3=$("#td13").html();
-						var cant3=$("#td23").html();
-						var ciudad4=$("#td14").html();
-						var cant4=$("#td24").html();
+						var ciudad1=$("#tdc11").html();
+						var cant1=$("#tdc21").html();
+						var ciudad2=$("#tdc12").html();
+						var cant2=$("#tdc22").html();
+						var ciudad3=$("#tdc13").html();
+						var cant3=$("#tdc23").html();
+						var ciudad4=$("#tdc14").html();
+						var cant4=$("#tdc24").html();
 						var ciudad5="Otros";
 						var cant5=$("#cantPerson").html();
 						cant5=parseInt(cant5);
@@ -217,6 +259,58 @@ $( document ).ready(function(){
 
 var ctx = document.getElementById("chart-area").getContext("2d");
 window.myPie = new Chart(ctx).Pie(pieData);
+					}       
+				});
+				
+			}
+
+
+			function consultarBarrio() {
+				$.ajax({
+					url: "php/consultarBarrio.php",
+					type: "POST",
+					data: "",
+					success: function(resp)        
+					{
+
+						
+						$("#cantBarrio").html(resp);
+
+						
+						var barrio1=$("#tdb11").html();
+						var cant1=$("#tdb21").html();
+						var barrio2=$("#tdb12").html();
+						var cant2=$("#tdb22").html();
+						var barrio3=$("#tdb13").html();
+						var cant3=$("#tdb23").html();
+
+						
+
+						
+						var pieData = [ {
+								value:parseInt(cant1),
+								label: barrio1,
+								color:"#0b82e7",
+								highlight: "#0c62ab"
+							},
+							{
+								value:parseInt(cant2),
+								label: barrio2,
+								color: "#ea80fc",
+								highlight: "#e040fb"
+								
+							},
+							{
+								value:parseInt(cant3),
+								label: barrio3,
+								color: "#e3e860",
+								highlight: "#a9ad47"
+								
+							}
+						];
+var ctx2 = document.getElementById("chart-area2").getContext("2d");
+window.myPie = new Chart(ctx2).Doughnut(pieData);
+
 					}       
 				});
 				
